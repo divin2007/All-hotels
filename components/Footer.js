@@ -13,8 +13,8 @@ export default function Footer() {
           </p>
           <div className="flex gap-6 opacity-30">
             <span className="material-symbols-outlined cursor-pointer hover:text-gold transition-colors">public</span>
-            <span class="material-symbols-outlined cursor-pointer hover:text-gold transition-colors">share</span>
-            <span class="material-symbols-outlined cursor-pointer hover:text-gold transition-colors">mail</span>
+            <span className="material-symbols-outlined cursor-pointer hover:text-gold transition-colors">share</span>
+            <span className="material-symbols-outlined cursor-pointer hover:text-gold transition-colors">mail</span>
           </div>
         </div>
 
