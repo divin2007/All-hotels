@@ -31,7 +31,7 @@
         if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
         n.queue=[];t=b.createElement(e);t.async=!0;
         t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(n,s)}(window, document,'script',
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', 'META_PIXEL_ID');
         fbq('track', 'PageView');
@@ -42,7 +42,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Cloudbeds Immersive Experience 2.0 -->
-    <script type="text/javascript" data-cookieconsent="ignore" src="https://static1.cloudbeds.com/booking-engine/latest/static/js/immersive-experience/cb-immersive-experience.js"></script>
+    <script type="text/javascript" src="https://static1.cloudbeds.com/booking-engine/latest/static/js/immersive-experience/cb-immersive-experience.js"></script>
+    <script src="assets/js/main.js" defer></script>
     <script>
         tailwind.config = {
             theme: {
@@ -81,11 +82,29 @@
             line-height: 1;
         }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hotel",
+      "name": "Aetheria Boutique Hotel",
+      "description": "A sanctuary of quiet luxury, where modern elegance meets timeless Mediterranean heritage.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Coastal Region",
+        "addressCountry": "International"
+      },
+      "starRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "url": "https://all-hotels.vercel.app"
+    }
+    </script>
 </head>
 <body>
     <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-navy/5 h-24 flex items-center">
-        <nav class="container mx-auto px-12 flex justify-between items-center max-w-[1440px]">
+        <nav class="container mx-auto px-12 flex justify-between items-center max-w-[1440px] w-full">
             <a href="index.html" class="font-serif italic text-2xl tracking-[0.3em] text-charcoal">AETHERIA</a>
 
             <div class="hidden md:flex items-center gap-12 text-[11px] tracking-[0.2em] uppercase font-semibold text-charcoal/60">
@@ -96,11 +115,26 @@
                 <a href="gallery.html" class="hover:text-gold transition-colors">Gallery</a>
             </div>
 
-            <a href="#reservations" class="bg-charcoal text-ivory px-8 py-3 text-[11px] font-semibold uppercase tracking-widest hover:bg-navy transition-all">
-                Reserve
-            </a>
+            <div class="flex items-center gap-6">
+                <a href="#reservations" class="hidden sm:block bg-charcoal text-ivory px-8 py-3 text-[11px] font-semibold uppercase tracking-widest hover:bg-navy transition-all">
+                    Reserve
+                </a>
+                <button id="mobile-menu-toggle" class="md:hidden text-charcoal p-2 focus:outline-none">
+                    <span class="material-symbols-outlined !text-3xl">menu</span>
+                </button>
+            </div>
         </nav>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col items-center justify-center gap-10">
+        <a href="suites.html" class="font-serif text-3xl text-charcoal">Suites</a>
+        <a href="dining.html" class="font-serif text-3xl text-charcoal">Dining</a>
+        <a href="wellness.html" class="font-serif text-3xl text-charcoal">Wellness</a>
+        <a href="experiences.html" class="font-serif text-3xl text-charcoal">Experiences</a>
+        <a href="gallery.html" class="font-serif text-3xl text-charcoal">Gallery</a>
+        <a href="#reservations" class="bg-gold text-white px-12 py-4 text-[12px] font-semibold uppercase tracking-widest mt-4" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Reserve Now</a>
+    </div>
 
     <!-- Hero Section -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden">
@@ -356,7 +390,7 @@
 
             <!-- Cloudbeds Embed -->
             <div class="bg-white p-8 md:p-12 shadow-2xl border border-navy/5">
-                <cb-immersive-experience mode="standard" property-code="70415q" language="en"></cb-immersive-experience>
+                <div id="cloudbeds-booking-container"></div>
             </div>
 
             <div class="mt-12 flex justify-center gap-12 text-[10px] font-semibold text-charcoal/30 uppercase tracking-[0.2em]">

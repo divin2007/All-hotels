@@ -67,12 +67,38 @@
         if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
         n.queue=[];t=b.createElement(e);t.async=!0;
         t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(n,s)}(window, document,'script',
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', 'META_PIXEL_ID');
         fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
+    <!-- Cloudbeds Booking Engine Integration -->
+    <script type="text/javascript" src="https://static1.cloudbeds.com/booking-engine/latest/static/js/immersive-experience/cb-immersive-experience.js"></script>
+    <script>
+        (function() {
+            function initCloudbeds() {
+                const container = document.getElementById('cloudbeds-booking-container');
+                if (!container) return;
+
+                if (window.CloudbedsBookingEngine && window.CloudbedsBookingEngine.init) {
+                    window.CloudbedsBookingEngine.init({
+                        propertyId: '70415q',
+                        displayMode: 'standard',
+                        containerId: 'cloudbeds-booking-container'
+                    });
+                } else {
+                    setTimeout(initCloudbeds, 500);
+                }
+            }
+            if (document.readyState === 'complete') {
+                initCloudbeds();
+            } else {
+                window.addEventListener('load', initCloudbeds);
+            }
+        })();
+    </script>
 </head>
 <body class="pt-24">
     <!-- Header -->
@@ -214,8 +240,14 @@
                 </div>
             </div>
         </div>
-        <div class="container mx-auto max-w-[1440px] mt-20 pt-12 border-t border-navy/5 flex flex-col md:row justify-between items-center gap-8 text-[10px] font-semibold uppercase tracking-widest text-charcoal/30">
-            <span>© 2024 Aetheria Boutique Hotel. Designed for Serenity.</span>
+        <div class="container mx-auto max-w-[1440px] mt-20 pt-12 border-t border-navy/5 flex flex-col md:row justify-between items-center gap-8">
+            <span class="text-[10px] font-semibold uppercase tracking-widest text-charcoal/30">
+                © 2024 Aetheria Boutique Hotel. Designed for Serenity.
+            </span>
+            <div class="flex gap-8 opacity-20">
+                <img src="https://www.cloudbeds.com/wp-content/uploads/2025/08/footer-pcidss.svg" alt="PCI-DSS" class="h-4">
+                <img src="https://www.cloudbeds.com/wp-content/uploads/2025/08/footer-ssl.svg" alt="SSL" class="h-4">
+            </div>
         </div>
     </footer>
 </body>
