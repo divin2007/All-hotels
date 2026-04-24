@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 13, 28, 47;
+  --background-start-rgb: 248, 249, 255;
+  --background-end-rgb: 248, 249, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb));
+}
+
+.serif-italic {
+  font-style: italic;
+}
+
+.glass-overlay {
+  background: rgba(248, 249, 255, 0.95);
+  backdrop-filter: blur(20px);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
